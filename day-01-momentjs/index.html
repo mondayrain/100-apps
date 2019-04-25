@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <script src='./moment.js'></script>
+    </head>
+
+    <body>
+        <h1>MomentJS vs Date</h1>
+
+        <h2>Now </h2>
+        <p>Get the current (date)time.<br>
+            Datetimes are always rendered by the browser <i>in the user's timezone</i>.</p>
+        <p>
+            <b>Date</b><br/>
+            <code>new Date()</code>: <span id='now-date'></span>
+        </p>
+        <p>
+            <b>MomentJS</b><br/>
+            <code>moment()</code>: <span id='now-moment'></span>
+        </p>
+
+        <h2>Timestamps</h2>
+        <p>Since we need to pass time between different timezones, time is usually passed around in UTC (Universal Time, Coordinated) time stamps.
+            UTC is sometimes also referred to as Greenwich Mean Time since it's based on the local standard time in Greenwich. Midnight in Greenwich means
+            00:00UTC, and noon at 12:00UTC.
+
+            In the computing world, we also tend to pass around what we call Unix Timestamps. A Unix timestamp (also known as POSIX time) describes
+            the # of seconds that have elapsed since 00:00:00 Thursday, 1 Jan 1970 UTC.
+        </p>
+
+        <p>If the date is before 1970, then the time stamp will be negative!</p>
+
+        <h3>Getting the current (unix) timestamp</h3>
+        <p>
+            <b>Date</b><br/>
+            <p>Both <code>Date.now()</code> and <code>Date().getTime()</code> will get the current unix timestamp, but `Date.now()` is recommended as it is clearer and much faster.</p>
+            <code>Date.now()</code>: <span id='unix-date'></span>
+        </p>
+        <p>
+            <b>MomentJS</b><br/>
+            <p>`unix()` returns a unix timestamp in seconds; `valueOf()` returns it in seconds</p>
+            <code>moment().unix()</code>: <span id='unix-moment'></span>
+            <br>
+            <code>moment().valueOf()</code>: <span id='unix-moment-value-of'></span>
+        </p>
+
+        <h3>Parsing a timestamp</h3>
+        <p>Given the timestamp '737424000', which represents my birthday as May 15 1993 00:00:00 UTC...</p>
+        <p>
+            <b>Date</b><br/>
+            <code>new Date(parseInt(timestamp) * 1000)</code>: <span id='parse-timestamp-date'></span>
+        </p>
+        <p>
+            <b>MomentJS</b><br/>
+            <code>moment.unix(timestamp)</code>: <span id='parse-timestamp-moment'></span>
+        </p>
+
+        <p>If you're viewing this West of Greenwich, England then it'll say May 14 because I was born on May 14 in your timezone! (At least according to the timestamp, which says that I was born at 00:00:00 on May 15)</p>
+
+        <h3>Parsing a string</h3>
+
+        <h2>Relative Dates</h2>
+
+        <h3>Difference between dates</h3>
+
+        <h3>X days/months/years from now</h3>
+
+        <h2>Formatting</h2>
+        <script src='./index.js'></script>
+
+        <h2>Extra Notes</h2>
+        <p><b>Daylight savings does not affect UTC</b>; it decides the change in offset <i>to</i> UTC.</p>
+        <p><b>Leap seconds</b> for UTC is kept within 0.9 seconds of physical reality by introducing a "leap second" in the last minute of the UTC year (or the last minute of June).</p>
+
+        <p>Remember that UTC is totally arbitary!</p>
+    </body>
+</html>
+
