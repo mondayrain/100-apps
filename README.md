@@ -1,4 +1,5 @@
-# 100-apps
+# 100 Days, 100 Concepts
 
-100 days, 100 apps, 100 days of learning through doing
+100 days, 100 concepts/technologies, 100 mini "projects" to explore each one
 
+an experiment in surveying tech & learning through doing
