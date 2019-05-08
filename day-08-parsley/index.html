@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.1/parsley.min.js"></script>
+        <link rel='stylesheet' type='text/css' href='parsley.css'>
+    </head>
+
+    <body>
+        <script src='./index.js'></script>
+
+        <h1>Parsley.js</h1>
+        <h3>form validation</h3>
+
+        <h2>HTML5</h2>
+        <p>HTML5 comes with built-in form input types that are semantic.</p>
+        <p>Many browsers provide built-in validation for some input types like email and url.</p>
+
+        <p>Alternatively, HTML5 now allows "constraint validation", which lets browsers run attributes like "min", "max", "pattern", and "required" to figure out if the form input is valid _without_ JavaScript.</p>
+
+        <form>
+            <br>
+            <p><b>Email</b></p>
+            <p>The email input for HTML5 has built-in validation</p>
+            <input type='email' placeholder='Enter email' required/>
+
+            <br>
+            <p><b>Url</b></p>
+            <p>This input too</p>
+            <input type='url' required/>
+
+            <br>
+            <p><b>Phone Number</b></p>
+            <p>There is no validation on this input, but it is _required_ on the form so there must be a value</p>
+            <input type='tel' placeholder='+1-604-123-4567' required/>
+
+            <br>
+            <p><b>Number</b></p>
+            <p>This will validate that the number must be between 1 and 10</p>
+            <input type='number' min="1" max="10" required/>
+
+            <br><br>
+            <input type="submit" value='Submit!'>
+        </form>
+
+        <br>
+        <h2>Non-HTML5 / Using JavaScript and Parsley.js</h2>
+
+        <p>Parsley uses jQuery, and does validation through JS.</p>
+        <p>
+            You can add validation by either 1) defining `data-parsley-validate` on your form or running `$('#parsley-form').parsley()` in a script, then 2) defining `data-parsley-#{some-attribute}=value` on your inputs.
+            This should auto-magically validate input!
+        </p>
+
+        <p>For example:</p>
+
+        <form id="parsley-form" data-parsley-validate>
+            <p>This input will only accept letters (no numbers!):</p>
+            <input type="text" data-parsley-pattern="^[a-zA-Z]+$" data-parsley-trigger="keyup"  required/>
+
+            <br>
+            <p>This password input expects a certain length:</p>
+            <input type="password" data-parsley-length="[6, 10]" data-parsley-trigger="keyup" placeholder="Password" required/>
+
+            <br>
+            <p>The below 2 text fields must match or they will not be valid!</p>
+            <input type="text" id="matching-1" data-parsley-equalto="#matching-2">
+            <br>
+            <input type="text" id="matching-2" data-parsley-equalto="#matching-1">
+
+            <br>
+            <input type="submit" value="Submit"/>
+            <br><br>
+
+            <p>You'll notice that there is nice colouring that comes with Parsley.js validation! This is because we included `parsley.css` :).</p>
+        </form>
+
+        <script>
+            $('#parsley-form').parsley();
+        </script>
+    </body>
+</html>
+
