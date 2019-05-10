@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <!-- development version, includes helpful console warnings -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <link rel="stylesheet" type="text/css" href="index.css">
+    </head>
+
+    <body>
+        <h1>Hello, Vue.js world!</h1>
+        <p>This page uses the core Vue.js library for view rendering</p>
+
+        <div class='vue-component' id='app'>
+            {{ message }}
+        </div>
+
+        <div class='vue-component' id='app2'>
+            <span v-bind:title="message">
+                    Hover your mouse over me for a few seconds
+                    to see my dynamically bound title!
+            </span>
+        </div>
+
+        <div id="app3">
+            <span v-if="seen">Now you see me</span>
+        </div>
+
+        <button id='toggle-seen'>Toggle Seen</button>
+
+        <div id="app4">
+            <ol>
+                <li v-for="todo in todos">
+                    {{ todo }}
+                </li>
+            </ol>
+        </div>
+    </body>
+
+    <script src='index.js'></script>
+</html>
